@@ -11,7 +11,7 @@ Based on user-entered criteria of password attributes, generate and display an a
 *If the user does not select any character type to include in the password, they are alerted and the list of options is re-prompted.
 *If user clicks Cancel on the password length prompt, the cycle ends and a message is presented to the user.
 ### Password Generation
-*I created the character type lists as strings rather than as explicit arrays ("abc" vs ["a","b","c"]) since a string is really just an array of characters and can be indexed the same as an explicit array. And...it was easier to type it out as a string. :-) 
+*I created the character type lists as strings rather than as explicit arrays ("abc" vs ["a","b","c"]) since a string can be indexed the same as an explicit array. And...it was easier to type it out as a string. :-) I guess that means I miss out on the opportunity to use something like array1.concat(array2) to combine two arrays...
 *Additionally, I only created one alphabet list, in lower case. I just toUpperCase that string when building the potentialChars string(array) if the user says Yes to upper case letters.
 ### Problems
 This homework was very doable but I was not able to do one extra step I wanted. In lines 82-86 of script.js there is some commented out code. I was trying to clear out the password result box when the user clicks on the Generate Button a second (or third, or fourth, or ...). It just seems like there should be a cleaner page in the background while they answered all the criteria prompts. Anyway, what I tried did not work so I put it back how it was originally provided.

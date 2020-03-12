@@ -2,7 +2,9 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// lists of character types
+// lists of character types 
+// (strings are arrays of characters so individual chars can be indexed on the string like an array.)
+// (( I guess that means I miss out on the opportunity to use something like array1.concat(array2) to combine two arrays...))
 var lowerChars = "abcdefghijklmnopqrstuvwxyz";
 var numericChars = "0123456789";
 // special characters, \&'" are all backslashed to comply with javascript requirements
@@ -80,9 +82,9 @@ function generatePassword() {
 // Write password to the #password input
 function writePassword() {
   // ASK: this is not working, the last password created continues to be displayed on the screen.
-  // var passwordText = document.querySelector("#password");
   // // clear out the password display in case the user presses Generate Password more than once.
   // // they should start with a clean screen each time
+  // var passwordText = document.querySelector("#password");
   // passwordText.value = "";
 
   var password = generatePassword();
