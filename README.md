@@ -8,7 +8,8 @@ Based on user-entered criteria of password attributes, generate and display an a
 Found documentation that four special characters in JavaScript, &\'", need to be backslashed in order to display properly. In testing, it seemed like & and ' were actually ok with or without the leading backslash, but I left all four in.
 ### User Inputs
 If the user enters text rather than number, or a value outside of the 8-128 character min/max, they are alerted and re-prompted for a length for password. If the user does not select any character type to include in the password, they are alerted and the list of options is re-prompted.
-### Page specific:
+### Password Generation
+I created the character type lists as strings rather than as explicit arrays ("abc" vs ["a","b","c"]) since a string is really just an array of characters and can be indexed the same as an explicit array. And...it was easier to type it out as a string. :-) Additionally, I only created one alphabet list, in lower case. I just toUpperCase that string when building the potentialChars string(array) if the user says Yes to upper case letters.
 
 ## Table of Contents
 * [Project Details](#project-details)
@@ -53,10 +54,10 @@ WHEN prompted for character types to include in the password
 THEN I choose lowercase, uppercase, numeric, and/or special characters
 WHEN I answer each prompt
 THEN my input should be validated and at least one character type should be selected
--WHEN all prompts are answered
--THEN a password is generated that matches the selected criteria
--WHEN the password is generated
--THEN the password is either displayed in an alert or written to the page
+WHEN all prompts are answered
+THEN a password is generated that matches the selected criteria
+WHEN the password is generated
+THEN the password is either displayed in an alert or written to the page
 ```
 The following image demonstrates the application functionality:
 ![password generator demo](./Assets/03-javascript-homework-demo.png)

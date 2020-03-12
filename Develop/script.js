@@ -1,26 +1,19 @@
 
-// helper function
-function printStringAsArray(aString){
-  console.log(`string length: ${aString.length}`);
-  for (let i = 0; i < aString.length; i++) {
-    console.log(aString[i]);
-  }
-  console.log("********************");
-}
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// list of alpha characters, lowercase
+// lists of character types
 var lowerChars = "abcdefghijklmnopqrstuvwxyz";
-// list of numeric characters
 var numericChars = "0123456789";
-// list of special characters, \&'" are all backslashed to comply with javascript requirements
+// special characters, \&'" are all backslashed to comply with javascript requirements
 var specialChars = "\\\&\'\"`~!@#$%^*()-_=+[{]}|;:,<.>/?";
 
-function getUserInput(){
+function generatePassword() {
+  // *********** GET USER INPUT ***********
   var lengthValid = false;
   while (!lengthValid) {
     var pwLength = prompt(`How many characters should be in the password?\n(minimum of 8 and maximum of 128 characters allowed)`);
+    console.log(`pwLength entered: ${pwLength}`);
     
     // check the length is between 8 and 128
     if(isNaN(pwLength)){
@@ -42,29 +35,46 @@ function getUserInput(){
     var pwUpper = confirm(`Should the password include upper case alpha characters?`);
     var pwNumeric = confirm(`Should the password include numeric characters?`);
     var pwSpecial = confirm(`Should the password include special characters?`);
-  
+    console.log(`user choices:\n  lower: ${pwLower}\n  upper: ${pwUpper}\n  num: ${pwNumeric}\n  special: ${pwSpecial}`);
+    
     // check that at least one is selected
     if(!pwLower && !pwUpper && !pwNumeric && !pwSpecial){
       alert(`Seriously, you have to pick something.\nTry again. Just one character type, any one.`);
     }
   }
-}
 
-function generatePassword() {
-  getUserInput();
-
+  // *********** BUILD A PASSWORD ***********
   // build new array of potential characters based on criteria selected
-  var potentialChars = specialChars;
+  var potentialChars = "";
+  if(pwLower){
+    potentialChars += lowerChars;
+  }
+  if(pwUpper){
+    potentialChars += lowerChars.toUpperCase();
+  }
+  if(pwNumeric){
+    potentialChars += numericChars;
+  }
+  if(pwSpecial){
+    potentialChars += specialChars;
+  }
+  console.log(`potentialChars: ${potentialChars}`);
 
-  // randomly pull from new array for length specified
-  //     build a password result, character by character
+  // pull a random a character from new array, a number of times equal to the specified password length,
+  // and build password character by character
+  var generatedPW = "";
+  for (let i = 0; i < pwLength; i++) {
+    generatedPW += potentialChars[Math.floor(Math.random() * potentialChars.length)];
+  }
+  console.log(`pwLength: ${pwLength}\ngeneratedPW length: ${generatedPW.length}\ngeneratedPW: ${generatedPW}`);
 
-  var generatedPW = potentialChars;
+  // *********** RETURN NEW PASSWORD ***********
   return generatedPW;
 }
 
 // Write password to the #password input
 function writePassword() {
+  // ASK: this is not working, the last password created continues to be displayed on the screen.
   // var passwordText = document.querySelector("#password");
   // // clear out the password display in case the user presses Generate Password more than once.
   // // they should start with a clean screen each time
