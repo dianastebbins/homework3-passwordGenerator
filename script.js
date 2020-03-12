@@ -14,6 +14,11 @@ function generatePassword() {
   while (!lengthValid) {
     var pwLength = prompt(`How many characters should be in the password?\n(minimum of 8 and maximum of 128 characters allowed)`);
     console.log(`pwLength entered: ${pwLength}`);
+
+    // what if user presses Cancel?
+    if(pwLength === null){
+      return "Ok, no password for you!";
+    }
     
     // check the length is between 8 and 128
     if(isNaN(pwLength)){
