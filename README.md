@@ -84,7 +84,6 @@ url to deployed app:
 ## Usage
 ## Credits
 *Requirements copied from provided Homework files of Full Stack Coding Bootcamp.
-*Several objects created from starting code found at https://getbootstrap.com/docs/4.0/components/ site
 ## License
 ## Badges
 ## Contributing
